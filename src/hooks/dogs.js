@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { fetchDogs } from '../services/fetchDogs';
+import { fetchDogDetail, fetchDogs } from '../services/fetchDogs';
+import { useHistory } from 'react-router-dom';
 
 export function useDogs() {
   const [dogs, setDogs] = useState([]);
@@ -14,4 +15,22 @@ export function useDogs() {
   }, []);
 
   return dogs;
+}
+
+export function useDogDetail(id) {
+  const [dog, setDog] = useState({});
+  const history = useHistory();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchDogDetail(id);
+        setDog(data);
+      } catch {
+        history.push('/dogs');
+      }
+    };
+    fetchData();
+  }, [id, history]);
+  return dog;
 }
