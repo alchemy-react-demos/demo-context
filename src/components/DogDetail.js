@@ -1,17 +1,12 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDogDetail } from '../hooks/dogs';
-
+import Dog from './Dog';
 export default function DogDetail() {
   const { id } = useParams();
-  const { name, image, breed, bio } = useDogDetail(id);
-  console.log(name);
+  const dog = useDogDetail(id);
   return (
-    <>
-      <h1>{name}</h1>
-      <img src={image} />
-      <p>{breed}</p>
-      <p>{bio}</p>
-      <Link to="/dogs">Back</Link>
-    </>
+    <div className="dog-detail-container">
+      <Dog dog={dog} age={7} name="Benny" showDetail />
+    </div>
   );
 }

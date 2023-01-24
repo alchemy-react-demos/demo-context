@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDogs } from '../hooks/dogs';
-import DogLink from './DogLink';
+import Dog from './Dog';
 import './DogList.css';
 export default function DogList() {
   const dogs = useDogs();
@@ -10,7 +10,7 @@ export default function DogList() {
       <Link to="/">Go Home</Link>
       <div className="dog-list">
         {dogs.map((dog) => (
-          <DogLink key={dog.id} dog={dog} />
+          <Dog key={dog.id} dog={dog} />
         ))}
       </div>
     </>
