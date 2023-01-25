@@ -3,10 +3,11 @@ import { useDogDetail } from '../hooks/dogs';
 import Dog from './Dog';
 export default function DogDetail() {
   const { id } = useParams();
-  const dog = useDogDetail(id);
+  const { dog, error } = useDogDetail(id);
   return (
     <div className="dog-detail-container">
-      <Dog dog={dog} age={7} name="Benny" showDetail />
+      {error && <p className="error"> ⚠️ {error} ⚠️ </p>}
+      {!error && <Dog dog={dog} age={7} name="Benny" showDetail />}
     </div>
   );
 }
