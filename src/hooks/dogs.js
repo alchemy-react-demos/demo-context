@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { fetchDogDetail, fetchDogs } from '../services/fetchDogs';
 import { useHistory } from 'react-router-dom';
+import { ErrorContext } from '../context/ErrorContext';
 
 export function useDogs() {
   const [dogs, setDogs] = useState([]);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
+  const { setError } = useContext(ErrorContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,15 +19,15 @@ export function useDogs() {
       }
     };
     fetchData();
-  }, []);
+  }, [setError]);
 
-  return { error, dogs };
+  return { dogs };
 }
 
 export function useDogDetail(id) {
   const [dog, setDog] = useState({});
-  const [error, setError] = useState(null);
-  const history = useHistory();
+  // const [error, setError] = useState(null);
+  const { setError } = useContext(ErrorContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,10 +36,9 @@ export function useDogDetail(id) {
         setDog(data);
       } catch (e) {
         setError(e.message);
-        history.push('/dogs');
       }
     };
     fetchData();
-  }, [id, history]);
-  return { dog, error };
+  }, [id, setError]);
+  return { dog };
 }

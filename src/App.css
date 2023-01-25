@@ -28,5 +28,7 @@ a:hover {
 }
 
 .error {
-  color: var(--color-5);
+  color: var(--color-1);
+  background-color: var(--color-5);
+  font-weight: bold;
 }
