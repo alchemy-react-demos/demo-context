@@ -1,0 +1,31 @@
+.dog-detail-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.dog-detail {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--color-4) 0px 2px 8px 0px;
+  border-radius: 10%;
+  max-width: 350px;
+  background-color: var(--color-4);
+}
+
+.dog-detail.compact {
+  width: 30vw;
+  margin: 10px;
+}
+
+.dog-detail .image {
+  width: 100%;
+  height: 200px;
+  border-radius: 10% 0;
+  background-size: cover;
+}
+
+.title {
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+}
