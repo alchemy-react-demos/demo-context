@@ -26,3 +26,9 @@ a {
 a:hover {
   color: var(--color-5);
 }
+
+.error {
+  color: var(--color-1);
+  background-color: var(--color-5);
+  font-weight: bold;
+}
